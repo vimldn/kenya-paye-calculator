@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Kenya's PAYE Tax in 2025 - Kenya PAYE Calculator Blog</title>
+    <meta name="description" content="A complete guide to Kenya's Pay As You Earn (PAYE) tax system, rates, and how to calculate your take-home pay in 2025.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .breadcrumb {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .post-header {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .post-meta {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-excerpt {
+            font-size: 1.2rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        .post-content {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .post-content h2 {
+            color: #333;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+        }
+
+        .post-content h3 {
+            color: #444;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .post-content ul, .post-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .post-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .calculation-example {
+            background: #fff5f5;
+            border: 2px solid #fed7d7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .calculation-example h4 {
+            color: #c53030;
+            margin-bottom: 1rem;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .nav-button:hover {
+            background: #764ba2;
+        }
+
+        .nav-button.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .post-header, .post-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <h1>Kenya PAYE Calculator</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../../index.html" style="text-decoration: none; color: #333; font-weight: bold;">🏠 Home</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Calculator</a></li>
+                <li><a href="../index.html">Blog</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a> / 
+            <a href="../index.html">Blog</a> / 
+            <span>Understanding Kenya's PAYE Tax in 2025</span>
+        </nav>
+
+        <header class="post-header">
+            <h1 class="post-title">Understanding Kenya's PAYE Tax in 2025</h1>
+            <div class="post-meta">
+                📅 Published on July 14, 2025 • ⏱️ 5 min read
+            </div>
+            <p class="post-excerpt">
+                A complete guide to Kenya's Pay As You Earn (PAYE) tax system, rates, and how to calculate your take-home pay.
+            </p>
+        </header>
+
+        <article class="post-content">
+            <h2>What is PAYE?</h2>
+            <p>Pay As You Earn (PAYE) is the tax deducted from your salary every month in Kenya. It's calculated based on your gross income and follows specific tax bands set by the Kenya Revenue Authority (KRA).</p>
+
+            <div class="highlight-box">
+                <strong>💡 Key Point:</strong> PAYE is deducted automatically by your employer, so you don't need to pay it separately.
+            </div>
+
+            <h2>2025 PAYE Tax Rates</h2>
+            <p>Kenya uses a progressive tax system with these rates:</p>
+
+            <ul>
+                <li><strong>First KSh 24,000:</strong> 10%</li>
+                <li><strong>Next KSh 8,333:</strong> 25%</li>
+                <li><strong>Above KSh 32,333:</strong> 30%</li>
+            </ul>
+
+            <div class="calculation-example">
+                <h4>💰 Example: KSh 80,000 Monthly Salary</h4>
+                <p><strong>First KSh 24,000:</strong> KSh 2,400 (10%)</p>
+                <p><strong>Next KSh 8,333:</strong> KSh 2,083 (25%)</p>
+                <p><strong>Remaining KSh 47,667:</strong> KSh 14,300 (30%)</p>
+                <p><strong>Total PAYE:</strong> KSh 18,783</p>
+                <p><em>Use our calculator to verify this!</em></p>
+            </div>
+
+            <h2>Other Deductions to Consider</h2>
+            <p>Besides PAYE, your salary may also include these deductions:</p>
+
+            <h3>NSSF (National Social Security Fund)</h3>
+            <p>NSSF contributions are calculated at 6% of your pensionable pay, with both you and your employer contributing equally (6% each, totaling 12%).</p>
+
+            <h3>NHIF (National Hospital Insurance Fund)</h3>
+            <p>NHIF rates are based on your gross salary and range from KSh 150 to KSh 1,700 per month depending on your income bracket.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Pro Tip:</strong> These deductions are made before calculating PAYE, which can reduce your taxable income!
+            </div>
+
+            <h2>How to Calculate Your Net Pay</h2>
+            <p>To calculate your take-home pay:</p>
+
+            <ol>
+                <li>Start with your gross salary</li>
+                <li>Subtract NSSF contribution</li>
+                <li>Subtract other allowable deductions</li>
+                <li>Calculate PAYE on the remaining amount</li>
+                <li>Subtract PAYE and NHIF to get your net pay</li>
+            </ol>
+
+            <div class="calculation-example">
+                <h4>💰 Complete Example: KSh 100,000 Gross Salary</h4>
+                <p><strong>Gross Salary:</strong> KSh 100,000</p>
+                <p><strong>Less NSSF (6%):</strong> KSh 6,000</p>
+                <p><strong>Taxable Income:</strong> KSh 94,000</p>
+                <p><strong>PAYE Tax:</strong> KSh 24,500</p>
+                <p><strong>Less NHIF:</strong> KSh 1,700</p>
+                <p><strong>Net Pay:</strong> KSh 67,800</p>
+                <p><em>Try our calculator for exact calculations!</em></p>
+            </div>
+
+            <h2>Tax Relief and Personal Relief</h2>
+            <p>Every Kenyan taxpayer is entitled to a personal relief of KSh 2,400 per month (KSh 28,800 annually). This amount is deducted from your calculated PAYE tax.</p>
+
+            <h2>Tips for Managing Your PAYE</h2>
+            <p>Understanding your PAYE helps you better plan your finances:</p>
+
+            <ul>
+                <li>Review your payslip monthly to understand deductions</li>
+                <li>Keep records for tax compliance</li>
+                <li>Consider voluntary contributions to pension schemes for tax benefits</li>
+                <li>Use salary calculators to plan career moves</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>🎯 Take Action:</strong> Use our <a href="../../index.html" style="color: #667eea;">PAYE Calculator</a> to see exactly how much tax you'll pay and what your take-home salary will be!
+            </div>
+        </article>
+
+        <nav class="navigation">
+            <a href="#" class="nav-button disabled">← Previous Post</a>
+            <a href="../index.html" class="nav-button">Back to Blog</a>
+            <a href="#" class="nav-button disabled">Next Post →</a>
+        </nav>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Kenya PAYE Calculator. All rights reserved.</p>
+    </footer>
+</body>
+</html>
