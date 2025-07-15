@@ -141,6 +141,17 @@
             padding: 2rem 0;
             margin-top: 4rem;
         }
+
+        .featured-badge {
+            background: #e53e3e;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -182,14 +193,24 @@
     <script>
         // Blog posts data - you can add new posts here
         const blogPosts = [
-    {
-        title: "Understanding Kenya's PAYE Tax in 2025",
-        date: "2025-07-14",
-        excerpt: "A complete guide to Kenya's Pay As You Earn (PAYE) tax system, rates, and how to calculate your take-home pay.",
-        slug: "kenya-paye-guide-2025",
-        image: "📊"
-    }
-];
+            {
+                title: "Kenya PAYE Tax Bands – 2025: A Comprehensive Guide",
+                date: "2025-07-15",
+                excerpt: "Complete coverage of Kenya's 2025 PAYE tax bands, NSSF changes, SHIF implementation, housing levy, and detailed calculation examples with real-world scenarios.",
+                slug: "kenya-paye-tax-bands-2025",
+                image: "📋",
+                readTime: "5 min read",
+                featured: true
+            },
+            {
+                title: "Understanding Kenya's PAYE Tax in 2025",
+                date: "2025-07-14",
+                excerpt: "A complete guide to Kenya's Pay As You Earn (PAYE) tax system, rates, and how to calculate your take-home pay.",
+                slug: "kenya-paye-guide-2025",
+                image: "📊",
+                readTime: "3 min read"
+            }
+        ];
 
         function renderBlogPosts() {
             const blogGrid = document.getElementById('blogGrid');
@@ -210,9 +231,11 @@
                         ${post.image || '📝'}
                     </div>
                     <div class="blog-card-content">
+                        ${post.featured ? '<span class="featured-badge">Latest</span>' : ''}
                         <h3>${post.title}</h3>
                         <div class="blog-meta">
                             <span>📅 ${new Date(post.date).toLocaleDateString('en-GB')}</span>
+                            ${post.readTime ? ` • ⏱️ ${post.readTime}` : ''}
                         </div>
                         <p class="blog-excerpt">${post.excerpt}</p>
                         <a href="posts/${post.slug}.html" class="read-more">Read More →</a>
