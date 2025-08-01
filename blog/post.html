@@ -477,6 +477,39 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
+        .not-found {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .not-found h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .not-found p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .not-found a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .not-found a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -527,76 +560,21 @@
             <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
         </div>
 
-        <article class="article">
-            <div class="article-hero">
-                <div class="article-hero-content">
-                    <span class="article-icon" id="articleIcon">💰</span>
-                    <span class="article-category" id="articleCategory">TAX TIPS</span>
-                    <h1 class="article-title" id="articleTitle">Loading...</h1>
-                    <div class="article-meta">
-                        <span class="meta-item">
-                            <span>📅</span>
-                            <span id="articleDate">Loading...</span>
-                        </span>
-                        <span class="meta-item">
-                            <span>⏱️</span>
-                            <span id="articleReadTime">Loading...</span>
-                        </span>
-                        <span class="meta-item">
-                            <span>👤</span>
-                            <span id="articleAuthor">Loading...</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+        <div id="postContent">
+            <!-- Post content will be loaded here -->
+        </div>
 
-            <div class="article-content">
-                <div class="article-excerpt" id="articleExcerpt">
-                    Loading article excerpt...
-                </div>
-
-                <div class="article-body" id="articleBody">
-                    <!-- Article content will be loaded here -->
-                </div>
-
-                <div class="social-share">
-                    <h3 class="share-title">Share this article</h3>
-                    <div class="share-buttons">
-                        <a href="#" class="share-btn share-twitter" onclick="shareTwitter()">
-                            🐦 Twitter
-                        </a>
-                        <a href="#" class="share-btn share-linkedin" onclick="shareLinkedIn()">
-                            💼 LinkedIn
-                        </a>
-                        <a href="#" class="share-btn share-whatsapp" onclick="shareWhatsApp()">
-                            📱 WhatsApp
-                        </a>
-                        <button class="share-btn share-copy" onclick="copyLink()">
-                            🔗 Copy Link
-                        </button>
-                    </div>
-                </div>
-
-                <div class="author-info">
-                    <div class="author-avatar" id="authorAvatar">
-                        TE
-                    </div>
-                    <div class="author-details">
-                        <h4 id="authorName">Tax Expert Team</h4>
-                        <p class="author-bio" id="authorBio">
-                            Our team of certified tax professionals and financial advisors brings years of experience 
-                            in Kenya's tax landscape to help you make informed financial decisions.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <div class="related-posts">
+        <div class="related-posts" id="relatedPostsSection" style="display: none;">
             <h2 class="related-title">📚 Related Articles</h2>
             <div class="related-grid" id="relatedPosts">
                 <!-- Related posts will be loaded here -->
             </div>
+        </div>
+
+        <div class="not-found" id="notFound" style="display: none;">
+            <h2>📄 Article Not Found</h2>
+            <p>Sorry, the article you're looking for doesn't exist or may have been moved.</p>
+            <a href="index.html">← Back to Blog Home</a>
         </div>
     </div>
 
@@ -687,12 +665,78 @@
                 author: "Tax Expert Team",
                 slug: "kenya-paye-tax-brackets-2025"
             },
-            // Add more sample posts here for demo
             {
                 id: 2,
                 title: "How to Maximize Your Pension Contributions for Tax Relief",
                 excerpt: "Discover how contributing to your pension can significantly reduce your tax burden while securing your retirement future. Complete with calculation examples.",
-                content: `<h2>Pension contributions content...</h2><p>Sample content for pension article.</p>`,
+                content: `
+                    <h2>The Power of Pension Contributions</h2>
+                    <p>One of the most effective ways to reduce your tax liability in Kenya is through strategic pension contributions. Not only do you secure your retirement future, but you also enjoy immediate tax benefits.</p>
+
+                    <div class="highlight-box">
+                        <h3>Maximum Allowable Contribution</h3>
+                        <p>You can contribute up to KES 30,000 per month (KES 360,000 annually) to a registered pension scheme and claim full tax relief on this amount.</p>
+                    </div>
+
+                    <h2>How Pension Tax Relief Works</h2>
+                    <p>Pension contributions are deducted from your gross salary before calculating PAYE tax. This means you pay tax on a lower amount, resulting in significant savings.</p>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Example: KES 150,000 Monthly Salary</div>
+                        <p><strong>Without Pension Contribution:</strong></p>
+                        <ul>
+                            <li>Gross Salary: KES 150,000</li>
+                            <li>PAYE Tax: KES 39,183</li>
+                            <li>Take-home after tax: KES 110,817</li>
+                        </ul>
+                        <p><strong>With KES 30,000 Pension Contribution:</strong></p>
+                        <ul>
+                            <li>Gross Salary: KES 150,000</li>
+                            <li>Less Pension: KES 30,000</li>
+                            <li>Taxable Income: KES 120,000</li>
+                            <li>PAYE Tax: KES 29,183</li>
+                            <li>Take-home after tax: KES 90,817</li>
+                            <li><strong>Tax Savings: KES 10,000 monthly!</strong></li>
+                        </ul>
+                    </div>
+
+                    <h2>Types of Eligible Pension Schemes</h2>
+                    <p>Several types of pension schemes qualify for tax relief:</p>
+                    <ul>
+                        <li><strong>Occupational Pension Schemes:</strong> Company-sponsored retirement plans</li>
+                        <li><strong>Individual Pension Plans:</strong> Personal retirement savings accounts</li>
+                        <li><strong>NSSF Contributions:</strong> National Social Security Fund (limited relief)</li>
+                        <li><strong>Provident Funds:</strong> Employer-established savings schemes</li>
+                    </ul>
+
+                    <h2>Strategies to Maximize Benefits</h2>
+                    <p>Here are proven strategies to optimize your pension contributions:</p>
+
+                    <h3>1. Maximize Monthly Contributions</h3>
+                    <p>Always try to contribute the full KES 30,000 monthly limit if your income allows. The tax savings compound over time.</p>
+
+                    <h3>2. Salary Sacrifice Arrangements</h3>
+                    <p>Work with your employer to implement salary sacrifice, where your pension contribution is deducted before calculating PAYE.</p>
+
+                    <h3>3. Bonus Contributions</h3>
+                    <p>When you receive bonuses, consider making additional voluntary contributions to your pension fund (within annual limits).</p>
+
+                    <div class="highlight-box">
+                        <h3>Important Consideration</h3>
+                        <p>While pension contributions offer excellent tax relief, remember that these funds are typically locked until retirement age. Ensure you maintain adequate liquid savings for emergencies.</p>
+                    </div>
+
+                    <h2>Long-term Wealth Building</h2>
+                    <p>Beyond tax savings, pension contributions offer:</p>
+                    <ul>
+                        <li>Compound growth over decades</li>
+                        <li>Professional fund management</li>
+                        <li>Inflation protection</li>
+                        <li>Retirement income security</li>
+                    </ul>
+
+                    <p>Start maximizing your pension contributions today and enjoy both immediate tax relief and long-term financial security.</p>
+                `,
                 category: "tax-tips",
                 icon: "🏦",
                 date: "2025-01-12",
@@ -700,6 +744,45 @@
                 featured: false,
                 author: "Financial Advisor",
                 slug: "maximize-pension-contributions-tax-relief"
+            },
+            {
+                id: 3,
+                title: "Salary Negotiation Strategies for Kenya's Job Market",
+                excerpt: "Learn effective strategies to negotiate better compensation packages, including benefits and allowances that can improve your overall tax efficiency.",
+                content: `<h2>Salary negotiation content...</h2><p>Sample content for salary negotiation article.</p>`,
+                category: "salary",
+                icon: "💼",
+                date: "2025-01-10",
+                readTime: "10 min read",
+                featured: false,
+                author: "Career Coach",
+                slug: "salary-negotiation-strategies-kenya"
+            },
+            {
+                id: 4,
+                title: "Understanding SHIF: What Kenyan Employees Need to Know",
+                excerpt: "A comprehensive breakdown of the Social Health Insurance Fund (SHIF) and how it replaces NHIF. Learn about contribution rates and benefits.",
+                content: `<h2>SHIF content...</h2><p>Sample content for SHIF article.</p>`,
+                category: "news",
+                icon: "🏥",
+                date: "2025-01-08",
+                readTime: "7 min read",
+                featured: false,
+                author: "Policy Analyst",
+                slug: "understanding-shif-kenya-employees"
+            },
+            {
+                id: 5,
+                title: "Best Investment Options for High-Income Earners in Kenya",
+                excerpt: "Explore tax-efficient investment strategies for professionals in higher tax brackets. From real estate to government bonds and equity investments.",
+                content: `<h2>Investment options content...</h2><p>Sample content for investment article.</p>`,
+                category: "investment",
+                icon: "📈",
+                date: "2025-01-05",
+                readTime: "12 min read",
+                featured: false,
+                author: "Investment Advisor",
+                slug: "best-investments-high-income-kenya"
             }
         ];
 
@@ -709,52 +792,151 @@
         // Initialize the page
         function initPost() {
             loadTheme();
+            setupEventListeners();
             loadPost();
             setupScrollTracking();
             setupBackToTop();
         }
 
-        // Load post based on URL slug
+        // Setup event listeners
+        function setupEventListeners() {
+            // Handle hash changes for navigation
+            window.addEventListener('hashchange', loadPost);
+        }
+
+        // Load post based on URL hash
         function loadPost() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const slug = urlParams.get('slug');
+            const hash = window.location.hash;
+            
+            if (!hash || !hash.startsWith('#/')) {
+                showNotFound();
+                return;
+            }
+
+            const slug = hash.substring(2); // Remove #/
             
             if (!slug) {
-                // Redirect to blog home if no slug
-                window.location.href = 'index.html';
+                showNotFound();
                 return;
             }
 
             currentPost = blogPosts.find(post => post.slug === slug);
             
             if (!currentPost) {
-                // Post not found, show error or redirect
-                document.getElementById('articleTitle').textContent = 'Article Not Found';
-                document.getElementById('articleBody').innerHTML = '<p>Sorry, this article could not be found.</p>';
+                showNotFound();
                 return;
             }
 
+            hideNotFound();
             renderPost();
             loadRelatedPosts();
             updateSEO();
         }
 
+        // Show not found message
+        function showNotFound() {
+            document.getElementById('postContent').style.display = 'none';
+            document.getElementById('relatedPostsSection').style.display = 'none';
+            document.getElementById('notFound').style.display = 'block';
+        }
+
+        // Hide not found message
+        function hideNotFound() {
+            document.getElementById('postContent').style.display = 'block';
+            document.getElementById('relatedPostsSection').style.display = 'block';
+            document.getElementById('notFound').style.display = 'none';
+        }
+
         // Render the post content
         function renderPost() {
-            document.getElementById('articleIcon').textContent = currentPost.icon;
-            document.getElementById('articleCategory').textContent = currentPost.category.replace('-', ' ').toUpperCase();
-            document.getElementById('articleTitle').textContent = currentPost.title;
-            document.getElementById('articleDate').textContent = formatDate(currentPost.date);
-            document.getElementById('articleReadTime').textContent = currentPost.readTime;
-            document.getElementById('articleAuthor').textContent = currentPost.author;
-            document.getElementById('articleExcerpt').textContent = currentPost.excerpt;
-            document.getElementById('articleBody').innerHTML = currentPost.content;
+            const postHTML = `
+                <article class="article">
+                    <div class="article-hero">
+                        <div class="article-hero-content">
+                            <span class="article-icon">${currentPost.icon}</span>
+                            <span class="article-category">${currentPost.category.replace('-', ' ').toUpperCase()}</span>
+                            <h1 class="article-title">${currentPost.title}</h1>
+                            <div class="article-meta">
+                                <span class="meta-item">
+                                    <span>📅</span>
+                                    <span>${formatDate(currentPost.date)}</span>
+                                </span>
+                                <span class="meta-item">
+                                    <span>⏱️</span>
+                                    <span>${currentPost.readTime}</span>
+                                </span>
+                                <span class="meta-item">
+                                    <span>👤</span>
+                                    <span>${currentPost.author}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
 
-            // Update author info
-            const authorName = currentPost.author;
-            const initials = authorName.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase();
-            document.getElementById('authorAvatar').textContent = initials;
-            document.getElementById('authorName').textContent = authorName;
+                    <div class="article-content">
+                        <div class="article-excerpt">
+                            ${currentPost.excerpt}
+                        </div>
+
+                        <div class="article-body">
+                            ${currentPost.content}
+                        </div>
+
+                        <div class="social-share">
+                            <h3 class="share-title">Share this article</h3>
+                            <div class="share-buttons">
+                                <a href="#" class="share-btn share-twitter" onclick="shareTwitter()">
+                                    🐦 Twitter
+                                </a>
+                                <a href="#" class="share-btn share-linkedin" onclick="shareLinkedIn()">
+                                    💼 LinkedIn
+                                </a>
+                                <a href="#" class="share-btn share-whatsapp" onclick="shareWhatsApp()">
+                                    📱 WhatsApp
+                                </a>
+                                <button class="share-btn share-copy" onclick="copyLink()">
+                                    🔗 Copy Link
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="author-info">
+                            <div class="author-avatar">
+                                ${getAuthorInitials(currentPost.author)}
+                            </div>
+                            <div class="author-details">
+                                <h4>${currentPost.author}</h4>
+                                <p class="author-bio">
+                                    ${getAuthorBio(currentPost.author)}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `;
+
+            document.getElementById('postContent').innerHTML = postHTML;
+        }
+
+        // Get author initials
+        function getAuthorInitials(authorName) {
+            return authorName.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase();
+        }
+
+        // Get author bio
+        function getAuthorBio(authorName) {
+            const bios = {
+                'Tax Expert Team': 'Our team of certified tax professionals and financial advisors brings years of experience in Kenya\'s tax landscape to help you make informed financial decisions.',
+                'Financial Advisor': 'A certified financial planner with over 10 years of experience helping Kenyan professionals optimize their financial strategies and build wealth.',
+                'Career Coach': 'Professional career consultant specializing in salary negotiations and career advancement in Kenya\'s competitive job market.',
+                'Policy Analyst': 'Expert in Kenyan tax policy and regulatory changes, providing insights on how new laws affect individual taxpayers.',
+                'Investment Advisor': 'Licensed investment advisor with expertise in East African markets and tax-efficient investment strategies.',
+                'Tax Consultant': 'Certified public accountant specializing in personal tax optimization and compliance for Kenyan taxpayers.',
+                'Business Tax Expert': 'Specialist in business taxation and compliance, helping entrepreneurs navigate Kenya\'s tax requirements.',
+                'Insurance Specialist': 'Licensed insurance advisor focused on helping clients maximize tax relief through strategic insurance planning.'
+            };
+            
+            return bios[authorName] || 'Financial expert dedicated to helping Kenyans make informed money decisions.';
         }
 
         // Load related posts
@@ -765,7 +947,7 @@
             
             const relatedGrid = document.getElementById('relatedPosts');
             relatedGrid.innerHTML = relatedPosts.map(post => `
-                <a href="post.html?slug=${post.slug}" class="related-card">
+                <a href="#/${post.slug}" class="related-card">
                     <h4>${post.icon} ${post.title}</h4>
                     <p class="related-excerpt">${post.excerpt}</p>
                     <small>${formatDate(post.date)} • ${post.readTime}</small>

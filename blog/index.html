@@ -638,7 +638,7 @@
                                 <h2 class="featured-title">${post.title}</h2>
                                 <p class="blog-excerpt">${post.excerpt}</p>
                                 <div class="blog-footer">
-                                    <a href="post.html?slug=${post.slug}" class="read-more">Read Full Article →</a>
+                                    <a href="#/${post.slug}" class="read-more">Read Full Article →</a>
                                     <span class="read-time">${post.readTime}</span>
                                 </div>
                             </div>
@@ -658,7 +658,7 @@
                                 <h2 class="blog-title">${post.title}</h2>
                                 <p class="blog-excerpt">${post.excerpt}</p>
                                 <div class="blog-footer">
-                                    <a href="post.html?slug=${post.slug}" class="read-more">Read More →</a>
+                                    <a href="#/${post.slug}" class="read-more">Read More →</a>
                                     <span class="read-time">${post.readTime}</span>
                                 </div>
                             </div>
@@ -762,6 +762,21 @@
                     filterPosts();
                 });
             });
+
+            // Handle hash changes for navigation
+            window.addEventListener('hashchange', handleRouting);
+            window.addEventListener('load', handleRouting);
+        }
+
+        // Handle routing based on hash
+        function handleRouting() {
+            const hash = window.location.hash;
+            
+            if (hash.startsWith('#/') && hash.length > 2) {
+                // This is a post URL, redirect to post page
+                const slug = hash.substring(2); // Remove #/
+                window.location.href = `post.html#/${slug}`;
+            }
         }
 
         // Debounce function for search
