@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Tips & Financial Insights - Kenya PAYE Calculator Blog</title>
-    <meta name="description" content="Expert tax advice, salary optimization tips, and financial insights for Kenyan professionals. Stay updated with the latest tax regulations and money-saving strategies.">
+    <title id="pageTitle">Tax Tips & Financial Insights - Kenya PAYE Calculator Blog</title>
+    <meta name="description" id="pageDescription" content="Expert tax advice, salary optimization tips, and financial insights for Kenyan professionals. Stay updated with the latest tax regulations and money-saving strategies.">
+    <meta name="keywords" id="pageKeywords" content="Kenya tax, PAYE, salary calculator, tax tips">
     
-    <!-- Reuse the same styles from main site -->
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" id="ogTitle" content="Tax Tips & Financial Insights - Kenya PAYE Calculator Blog">
+    <meta property="og:description" id="ogDescription" content="Expert tax advice, salary optimization tips, and financial insights for Kenyan professionals.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" id="ogUrl" content="">
+    
     <style>
         * {
             margin: 0;
@@ -23,7 +29,6 @@
             --info: #4299e1;
             --dark: #2d3748;
             --light: #f7fafc;
-            --ai-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         }
 
         body {
@@ -33,6 +38,7 @@
             padding: 20px;
             color: #333;
             transition: background 0.3s ease;
+            line-height: 1.7;
         }
 
         body.dark-mode {
@@ -42,6 +48,26 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--primary);
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Blog Home Styles */
+        .blog-home {
+            display: block;
+        }
+
+        .blog-home.hidden {
+            display: none;
         }
 
         .header {
@@ -86,7 +112,7 @@
             gap: 20px;
         }
 
-        .back-link {
+        .back-link, .nav-link {
             padding: 10px 20px;
             background: var(--primary);
             color: white;
@@ -94,9 +120,12 @@
             border-radius: 25px;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
         }
 
-        .back-link:hover {
+        .back-link:hover, .nav-link:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
@@ -195,6 +224,7 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             animation: fadeInUp 0.8s ease-out;
+            cursor: pointer;
         }
 
         .dark-mode .blog-card {
@@ -362,6 +392,402 @@
             line-height: 1.3;
         }
 
+        /* Post View Styles */
+        .post-view {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .post-view.active {
+            display: block;
+        }
+
+        .post-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .dark-mode .post-header {
+            background: rgba(45, 55, 72, 0.95);
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .article {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+
+        .dark-mode .article {
+            background: rgba(45, 55, 72, 0.95);
+            color: #e2e8f0;
+        }
+
+        .article-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .article-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .article-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .article-category {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 0.9em;
+            opacity: 0.9;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .article-content {
+            padding: 50px 40px;
+        }
+
+        .article-excerpt {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        .dark-mode .article-excerpt {
+            background: #4a5568;
+            color: #cbd5e0;
+        }
+
+        .article-body h2 {
+            font-size: 1.8em;
+            margin: 40px 0 20px 0;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .article-body h3 {
+            font-size: 1.4em;
+            margin: 30px 0 15px 0;
+            color: var(--secondary);
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .article-body ul, .article-body ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .article-body li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+            border: 1px solid var(--info);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .dark-mode .highlight-box {
+            background: linear-gradient(135deg, #234e52 0%, #285e61 100%);
+            border-color: #4c9a9e;
+        }
+
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-size: 1.2em;
+        }
+
+        .dark-mode .highlight-box::before {
+            background: #2d3748;
+        }
+
+        .example-box {
+            background: #f0f9ff;
+            border: 2px solid var(--success);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .dark-mode .example-box {
+            background: #1a3428;
+            border-color: #38a169;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: var(--success);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .social-share {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .dark-mode .social-share {
+            background: #4a5568;
+        }
+
+        .share-title {
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .dark-mode .share-title {
+            color: #e2e8f0;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .share-twitter {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .share-linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .share-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .share-copy {
+            background: #6c757d;
+            color: white;
+        }
+
+        .author-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .dark-mode .author-info {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .author-details h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 1.2em;
+        }
+
+        .author-bio {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .dark-mode .author-bio {
+            color: #a0aec0;
+        }
+
+        .related-posts {
+            margin-top: 60px;
+        }
+
+        .related-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .related-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .dark-mode .related-card {
+            background: rgba(45, 55, 72, 0.95);
+            color: #e2e8f0;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .related-card h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .related-excerpt {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .dark-mode .related-excerpt {
+            color: #a0aec0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: 1.2em;
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
         .no-results {
             text-align: center;
             padding: 60px 20px;
@@ -370,12 +796,6 @@
 
         .dark-mode .no-results {
             color: #a0aec0;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
         }
 
         .pagination {
@@ -429,11 +849,15 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
             .header h1 {
                 font-size: 2em;
             }
             
-            .nav-bar {
+            .nav-bar, .post-header {
                 flex-direction: column;
                 text-align: center;
             }
@@ -446,54 +870,183 @@
             .blog-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .article-hero {
+                padding: 40px 25px;
+            }
+            
+            .article-title {
+                font-size: 1.8em;
+            }
+            
+            .article-content {
+                padding: 30px 25px;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .author-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .share-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
+    
     <div class="container">
-        <div class="header">
-            <h1>📚 Tax & Finance Blog</h1>
-            <p>Expert insights for smart financial decisions in Kenya</p>
+        <!-- Blog Home View -->
+        <div id="blogHome" class="blog-home">
+            <div class="header">
+                <h1>📚 Tax & Finance Blog</h1>
+                <p>Expert insights for smart financial decisions in Kenya</p>
+            </div>
+
+            <div class="nav-bar">
+                <div class="nav-left">
+                    <a href="../index.html" class="back-link">← Back to Calculator</a>
+                    
+                    <div class="search-container">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" placeholder="Search articles..." id="searchInput">
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="tax-tips">Tax Tips</button>
+                    <button class="filter-btn" data-category="salary">Salary</button>
+                    <button class="filter-btn" data-category="investment">Investment</button>
+                    <button class="filter-btn" data-category="news">Tax News</button>
+                </div>
+
+                <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+            </div>
+
+            <div id="blogGrid" class="blog-grid">
+                <!-- Blog posts will be loaded here -->
+            </div>
+
+            <div id="pagination" class="pagination">
+                <!-- Pagination will be loaded here -->
+            </div>
         </div>
 
-        <div class="nav-bar">
-            <div class="nav-left">
-                <a href="../index.html" class="back-link">← Back to Calculator</a>
-                
-                <div class="search-container">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" class="search-input" placeholder="Search articles..." id="searchInput">
+        <!-- Post View -->
+        <div id="postView" class="post-view">
+            <div class="post-header">
+                <div class="nav-links">
+                    <button class="nav-link" onclick="navigateHome()">← Blog Home</button>
+                    <a href="../index.html" class="nav-link">🧮 Calculator</a>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+            </div>
+
+            <div id="postContent">
+                <!-- Post content will be loaded here -->
+            </div>
+
+            <div class="related-posts" id="relatedPostsSection">
+                <h2 class="related-title">📚 Related Articles</h2>
+                <div class="related-grid" id="relatedPosts">
+                    <!-- Related posts will be loaded here -->
                 </div>
             </div>
-
-            <div class="filters">
-                <button class="filter-btn active" data-category="all">All</button>
-                <button class="filter-btn" data-category="tax-tips">Tax Tips</button>
-                <button class="filter-btn" data-category="salary">Salary</button>
-                <button class="filter-btn" data-category="investment">Investment</button>
-                <button class="filter-btn" data-category="news">Tax News</button>
-            </div>
-
-            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-        </div>
-
-        <div id="blogGrid" class="blog-grid">
-            <!-- Blog posts will be loaded here -->
-        </div>
-
-        <div id="pagination" class="pagination">
-            <!-- Pagination will be loaded here -->
         </div>
     </div>
 
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </button>
+
     <script>
-        // Blog posts data - in a real implementation, this would come from a CMS or API
+        // Blog posts data
         const blogPosts = [
             {
                 id: 1,
                 title: "Complete Guide to Kenya PAYE Tax Brackets 2025",
                 excerpt: "Understanding the new tax brackets and how they affect your take-home salary. Learn about the latest changes in Kenya's tax structure and how to optimize your tax liability.",
-                content: "Full article content would go here...",
+                content: `
+                    <h2>Understanding Kenya's PAYE Tax System</h2>
+                    <p>Kenya's Pay As You Earn (PAYE) tax system is progressive, meaning higher earners pay higher tax rates. The 2025 tax year brings important changes that affect how much tax you pay on your salary.</p>
+
+                    <div class="highlight-box">
+                        <h3>Key Changes in 2025</h3>
+                        <p>The Kenya Revenue Authority (KRA) has implemented several changes to make the tax system more equitable while ensuring adequate government revenue.</p>
+                    </div>
+
+                    <h2>2025 Tax Brackets Breakdown</h2>
+                    <p>Here's how the progressive tax system works:</p>
+                    
+                    <ul>
+                        <li><strong>First KES 24,000:</strong> Taxed at 10%</li>
+                        <li><strong>Next KES 8,333 (KES 24,001 - 32,333):</strong> Taxed at 25%</li>
+                        <li><strong>Next KES 467,667 (KES 32,334 - 500,000):</strong> Taxed at 30%</li>
+                        <li><strong>Next KES 300,000 (KES 500,001 - 800,000):</strong> Taxed at 32.5%</li>
+                        <li><strong>Above KES 800,000:</strong> Taxed at 35%</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Example Calculation</div>
+                        <p><strong>Monthly Salary: KES 100,000</strong></p>
+                        <p>Tax calculation:</p>
+                        <ul>
+                            <li>First KES 24,000 × 10% = KES 2,400</li>
+                            <li>Next KES 8,333 × 25% = KES 2,083</li>
+                            <li>Remaining KES 67,667 × 30% = KES 20,300</li>
+                            <li><strong>Total PAYE: KES 24,783</strong></li>
+                            <li>Less Personal Relief: KES 2,400</li>
+                            <li><strong>Net PAYE: KES 22,383</strong></li>
+                        </ul>
+                    </div>
+
+                    <h2>Personal Relief and Deductions</h2>
+                    <p>Every employed person in Kenya is entitled to a personal relief of KES 2,400 per month. This amount is deducted from your gross tax before calculating your final PAYE.</p>
+
+                    <h3>Additional Deductions Available</h3>
+                    <p>You can further reduce your taxable income through:</p>
+                    <ul>
+                        <li><strong>Pension Contributions:</strong> Up to KES 30,000 monthly</li>
+                        <li><strong>Mortgage Interest:</strong> Up to KES 30,000 monthly</li>
+                        <li><strong>Insurance Relief:</strong> 15% of premiums up to KES 60,000 annually</li>
+                        <li><strong>Post-Retirement Medical Fund:</strong> Up to KES 15,000 monthly</li>
+                    </ul>
+
+                    <h2>Statutory Deductions</h2>
+                    <p>Besides PAYE, employees also pay:</p>
+                    <ul>
+                        <li><strong>NSSF:</strong> 6% of salary up to KES 4,320 monthly</li>
+                        <li><strong>SHIF:</strong> 2.75% of salary (minimum KES 300)</li>
+                        <li><strong>Housing Levy:</strong> 1.5% of salary</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h3>Pro Tip: Use Our Calculator</h3>
+                        <p>Our advanced PAYE calculator automatically applies all these rules and helps you discover optimization opportunities. Try different scenarios to see how various deductions can reduce your tax burden.</p>
+                    </div>
+
+                    <h2>Planning Your Tax Strategy</h2>
+                    <p>Understanding these brackets helps you make informed decisions about salary increases, bonuses, and additional income. Consider:</p>
+                    <ul>
+                        <li>Timing of bonuses to optimize tax brackets</li>
+                        <li>Maximizing allowable deductions</li>
+                        <li>Restructuring compensation packages</li>
+                        <li>Planning retirement contributions</li>
+                    </ul>
+                `,
                 category: "tax-tips",
                 icon: "💰",
                 date: "2025-01-15",
@@ -506,7 +1059,48 @@
                 id: 2,
                 title: "How to Maximize Your Pension Contributions for Tax Relief",
                 excerpt: "Discover how contributing to your pension can significantly reduce your tax burden while securing your retirement future. Complete with calculation examples.",
-                content: "Full article content would go here...",
+                content: `
+                    <h2>The Power of Pension Contributions</h2>
+                    <p>One of the most effective ways to reduce your tax liability in Kenya is through strategic pension contributions. Not only do you secure your retirement future, but you also enjoy immediate tax benefits.</p>
+
+                    <div class="highlight-box">
+                        <h3>Maximum Allowable Contribution</h3>
+                        <p>You can contribute up to KES 30,000 per month (KES 360,000 annually) to a registered pension scheme and claim full tax relief on this amount.</p>
+                    </div>
+
+                    <h2>How Pension Tax Relief Works</h2>
+                    <p>Pension contributions are deducted from your gross salary before calculating PAYE tax. This means you pay tax on a lower amount, resulting in significant savings.</p>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Example: KES 150,000 Monthly Salary</div>
+                        <p><strong>Without Pension Contribution:</strong></p>
+                        <ul>
+                            <li>Gross Salary: KES 150,000</li>
+                            <li>PAYE Tax: KES 39,183</li>
+                            <li>Take-home after tax: KES 110,817</li>
+                        </ul>
+                        <p><strong>With KES 30,000 Pension Contribution:</strong></p>
+                        <ul>
+                            <li>Gross Salary: KES 150,000</li>
+                            <li>Less Pension: KES 30,000</li>
+                            <li>Taxable Income: KES 120,000</li>
+                            <li>PAYE Tax: KES 29,183</li>
+                            <li>Take-home after tax: KES 90,817</li>
+                            <li><strong>Tax Savings: KES 10,000 monthly!</strong></li>
+                        </ul>
+                    </div>
+
+                    <h2>Types of Eligible Pension Schemes</h2>
+                    <p>Several types of pension schemes qualify for tax relief:</p>
+                    <ul>
+                        <li><strong>Occupational Pension Schemes:</strong> Company-sponsored retirement plans</li>
+                        <li><strong>Individual Pension Plans:</strong> Personal retirement savings accounts</li>
+                        <li><strong>NSSF Contributions:</strong> National Social Security Fund (limited relief)</li>
+                        <li><strong>Provident Funds:</strong> Employer-established savings schemes</li>
+                    </ul>
+
+                    <p>Start maximizing your pension contributions today and enjoy both immediate tax relief and long-term financial security.</p>
+                `,
                 category: "tax-tips",
                 icon: "🏦",
                 date: "2025-01-12",
@@ -519,7 +1113,7 @@
                 id: 3,
                 title: "Salary Negotiation Strategies for Kenya's Job Market",
                 excerpt: "Learn effective strategies to negotiate better compensation packages, including benefits and allowances that can improve your overall tax efficiency.",
-                content: "Full article content would go here...",
+                content: `<h2>Salary negotiation content...</h2><p>Sample content for salary negotiation article.</p>`,
                 category: "salary",
                 icon: "💼",
                 date: "2025-01-10",
@@ -532,7 +1126,7 @@
                 id: 4,
                 title: "Understanding SHIF: What Kenyan Employees Need to Know",
                 excerpt: "A comprehensive breakdown of the Social Health Insurance Fund (SHIF) and how it replaces NHIF. Learn about contribution rates and benefits.",
-                content: "Full article content would go here...",
+                content: `<h2>SHIF content...</h2><p>Sample content for SHIF article.</p>`,
                 category: "news",
                 icon: "🏥",
                 date: "2025-01-08",
@@ -545,7 +1139,7 @@
                 id: 5,
                 title: "Best Investment Options for High-Income Earners in Kenya",
                 excerpt: "Explore tax-efficient investment strategies for professionals in higher tax brackets. From real estate to government bonds and equity investments.",
-                content: "Full article content would go here...",
+                content: `<h2>Investment options content...</h2><p>Sample content for investment article.</p>`,
                 category: "investment",
                 icon: "📈",
                 date: "2025-01-05",
@@ -553,49 +1147,12 @@
                 featured: false,
                 author: "Investment Advisor",
                 slug: "best-investments-high-income-kenya"
-            },
-            {
-                id: 6,
-                title: "Housing Levy Explained: Impact on Your Payslip",
-                excerpt: "Understanding the 1.5% housing levy and how it affects your monthly deductions. Learn about potential benefits and exemptions.",
-                content: "Full article content would go here...",
-                category: "tax-tips",
-                icon: "🏠",
-                date: "2025-01-03",
-                readTime: "5 min read",
-                featured: false,
-                author: "Tax Consultant",
-                slug: "housing-levy-explained-impact-payslip"
-            },
-            {
-                id: 7,
-                title: "Freelancers & Consultants: Tax Obligations in Kenya",
-                excerpt: "A complete guide to tax compliance for independent contractors, including turnover tax, VAT thresholds, and allowable deductions.",
-                content: "Full article content would go here...",
-                category: "tax-tips",
-                icon: "💻",
-                date: "2024-12-28",
-                readTime: "9 min read",
-                featured: false,
-                author: "Business Tax Expert",
-                slug: "freelancers-tax-obligations-kenya"
-            },
-            {
-                id: 8,
-                title: "Medical Insurance Tax Relief: Maximizing Your Benefits",
-                excerpt: "How to claim 15% tax relief on medical, life, and education insurance premiums. Includes practical examples and documentation requirements.",
-                content: "Full article content would go here...",
-                category: "tax-tips",
-                icon: "🩺",
-                date: "2024-12-25",
-                readTime: "6 min read",
-                featured: false,
-                author: "Insurance Specialist",
-                slug: "medical-insurance-tax-relief-benefits"
             }
         ];
 
         // State management
+        let currentView = 'home';
+        let currentPost = null;
         let currentPage = 1;
         let postsPerPage = 6;
         let filteredPosts = [...blogPosts];
@@ -603,13 +1160,107 @@
         let searchTerm = '';
         let isDarkMode = false;
 
-        // Initialize the blog
-        function initBlog() {
-            renderBlogPosts();
+        // Initialize the app
+        function initApp() {
+            loadTheme();
             setupEventListeners();
+            handleRoute();
         }
 
-        // Render blog posts
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', debounce((e) => {
+                    searchTerm = e.target.value;
+                    filterPosts();
+                }, 300));
+            }
+
+            // Category filters
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentCategory = e.target.dataset.category;
+                    filterPosts();
+                });
+            });
+
+            // Handle popstate (back/forward buttons)
+            window.addEventListener('popstate', handleRoute);
+
+            // Handle scroll tracking
+            setupScrollTracking();
+            setupBackToTop();
+        }
+
+        // Handle routing based on current path
+        function handleRoute() {
+            const path = window.location.pathname;
+            const pathParts = path.split('/').filter(part => part);
+            
+            if (pathParts.length > 1 && pathParts[pathParts.length - 1] !== 'index.html') {
+                // This is a post URL
+                const slug = pathParts[pathParts.length - 1];
+                showPost(slug);
+            } else {
+                // This is the home page
+                showHome();
+            }
+        }
+
+        // Navigate to a post
+        function navigateToPost(slug) {
+            const newUrl = window.location.pathname.replace(/\/[^\/]*$/, '') + '/' + slug;
+            history.pushState({ view: 'post', slug: slug }, '', newUrl);
+            showPost(slug);
+        }
+
+        // Navigate to home
+        function navigateHome() {
+            const newUrl = window.location.pathname.replace(/\/[^\/]*$/, '') + '/';
+            history.pushState({ view: 'home' }, '', newUrl);
+            showHome();
+        }
+
+        // Show home view
+        function showHome() {
+            currentView = 'home';
+            document.getElementById('blogHome').classList.remove('hidden');
+            document.getElementById('postView').classList.remove('active');
+            
+            // Update page title and meta
+            document.getElementById('pageTitle').textContent = 'Tax Tips & Financial Insights - Kenya PAYE Calculator Blog';
+            document.getElementById('pageDescription').content = 'Expert tax advice, salary optimization tips, and financial insights for Kenyan professionals.';
+            
+            renderBlogPosts();
+        }
+
+        // Show post view
+        function showPost(slug) {
+            currentPost = blogPosts.find(post => post.slug === slug);
+            
+            if (!currentPost) {
+                // Post not found, redirect to home
+                navigateHome();
+                return;
+            }
+
+            currentView = 'post';
+            document.getElementById('blogHome').classList.add('hidden');
+            document.getElementById('postView').classList.add('active');
+            
+            renderPost();
+            loadRelatedPosts();
+            updateSEO();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render blog posts for home view
         function renderBlogPosts() {
             const blogGrid = document.getElementById('blogGrid');
             const startIndex = (currentPage - 1) * postsPerPage;
@@ -629,7 +1280,7 @@
             blogGrid.innerHTML = postsToShow.map((post, index) => {
                 if (post.featured && currentPage === 1 && currentCategory === 'all' && !searchTerm) {
                     return `
-                        <article class="blog-card featured-post">
+                        <article class="blog-card featured-post" onclick="navigateToPost('${post.slug}')">
                             <div class="featured-image">
                                 ${post.icon}
                             </div>
@@ -638,7 +1289,7 @@
                                 <h2 class="featured-title">${post.title}</h2>
                                 <p class="blog-excerpt">${post.excerpt}</p>
                                 <div class="blog-footer">
-                                    <a href="#/${post.slug}" class="read-more">Read Full Article →</a>
+                                    <span class="read-more">Read Full Article →</span>
                                     <span class="read-time">${post.readTime}</span>
                                 </div>
                             </div>
@@ -646,7 +1297,7 @@
                     `;
                 } else {
                     return `
-                        <article class="blog-card">
+                        <article class="blog-card" onclick="navigateToPost('${post.slug}')">
                             <div class="blog-image">
                                 ${post.icon}
                             </div>
@@ -658,7 +1309,7 @@
                                 <h2 class="blog-title">${post.title}</h2>
                                 <p class="blog-excerpt">${post.excerpt}</p>
                                 <div class="blog-footer">
-                                    <a href="#/${post.slug}" class="read-more">Read More →</a>
+                                    <span class="read-more">Read More →</span>
                                     <span class="read-time">${post.readTime}</span>
                                 </div>
                             </div>
@@ -668,6 +1319,122 @@
             }).join('');
 
             renderPagination();
+        }
+
+        // Render the post content
+        function renderPost() {
+            const postHTML = `
+                <article class="article">
+                    <div class="article-hero">
+                        <div class="article-hero-content">
+                            <span class="article-icon">${currentPost.icon}</span>
+                            <span class="article-category">${currentPost.category.replace('-', ' ').toUpperCase()}</span>
+                            <h1 class="article-title">${currentPost.title}</h1>
+                            <div class="article-meta">
+                                <span class="meta-item">
+                                    <span>📅</span>
+                                    <span>${formatDate(currentPost.date)}</span>
+                                </span>
+                                <span class="meta-item">
+                                    <span>⏱️</span>
+                                    <span>${currentPost.readTime}</span>
+                                </span>
+                                <span class="meta-item">
+                                    <span>👤</span>
+                                    <span>${currentPost.author}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="article-content">
+                        <div class="article-excerpt">
+                            ${currentPost.excerpt}
+                        </div>
+
+                        <div class="article-body">
+                            ${currentPost.content}
+                        </div>
+
+                        <div class="social-share">
+                            <h3 class="share-title">Share this article</h3>
+                            <div class="share-buttons">
+                                <a href="#" class="share-btn share-twitter" onclick="shareTwitter()">
+                                    🐦 Twitter
+                                </a>
+                                <a href="#" class="share-btn share-linkedin" onclick="shareLinkedIn()">
+                                    💼 LinkedIn
+                                </a>
+                                <a href="#" class="share-btn share-whatsapp" onclick="shareWhatsApp()">
+                                    📱 WhatsApp
+                                </a>
+                                <button class="share-btn share-copy" onclick="copyLink()">
+                                    🔗 Copy Link
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="author-info">
+                            <div class="author-avatar">
+                                ${getAuthorInitials(currentPost.author)}
+                            </div>
+                            <div class="author-details">
+                                <h4>${currentPost.author}</h4>
+                                <p class="author-bio">
+                                    ${getAuthorBio(currentPost.author)}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `;
+
+            document.getElementById('postContent').innerHTML = postHTML;
+        }
+
+        // Get author initials
+        function getAuthorInitials(authorName) {
+            return authorName.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase();
+        }
+
+        // Get author bio
+        function getAuthorBio(authorName) {
+            const bios = {
+                'Tax Expert Team': 'Our team of certified tax professionals and financial advisors brings years of experience in Kenya\'s tax landscape to help you make informed financial decisions.',
+                'Financial Advisor': 'A certified financial planner with over 10 years of experience helping Kenyan professionals optimize their financial strategies and build wealth.',
+                'Career Coach': 'Professional career consultant specializing in salary negotiations and career advancement in Kenya\'s competitive job market.',
+                'Policy Analyst': 'Expert in Kenyan tax policy and regulatory changes, providing insights on how new laws affect individual taxpayers.',
+                'Investment Advisor': 'Licensed investment advisor with expertise in East African markets and tax-efficient investment strategies.'
+            };
+            
+            return bios[authorName] || 'Financial expert dedicated to helping Kenyans make informed money decisions.';
+        }
+
+        // Load related posts
+        function loadRelatedPosts() {
+            const relatedPosts = blogPosts
+                .filter(post => post.id !== currentPost.id && post.category === currentPost.category)
+                .slice(0, 3);
+            
+            const relatedGrid = document.getElementById('relatedPosts');
+            relatedGrid.innerHTML = relatedPosts.map(post => `
+                <div class="related-card" onclick="navigateToPost('${post.slug}')">
+                    <h4>${post.icon} ${post.title}</h4>
+                    <p class="related-excerpt">${post.excerpt}</p>
+                    <small>${formatDate(post.date)} • ${post.readTime}</small>
+                </div>
+            `).join('');
+        }
+
+        // Update SEO meta tags
+        function updateSEO() {
+            document.getElementById('pageTitle').textContent = `${currentPost.title} - Kenya PAYE Calculator`;
+            document.getElementById('pageDescription').content = currentPost.excerpt;
+            document.getElementById('pageKeywords').content = `Kenya tax, PAYE, ${currentPost.category.replace('-', ' ')}, salary calculator`;
+            
+            document.getElementById('ogTitle').content = currentPost.title;
+            document.getElementById('ogDescription').content = currentPost.excerpt;
+            document.getElementById('ogUrl').content = window.location.href;
         }
 
         // Format date
@@ -688,14 +1455,12 @@
 
             let paginationHTML = '';
 
-            // Previous button
             paginationHTML += `
                 <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
                     ← Previous
                 </button>
             `;
 
-            // Page numbers
             for (let i = 1; i <= totalPages; i++) {
                 if (i === currentPage || i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
                     paginationHTML += `
@@ -708,7 +1473,6 @@
                 }
             }
 
-            // Next button
             paginationHTML += `
                 <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
                     Next →
@@ -744,39 +1508,90 @@
             renderBlogPosts();
         }
 
-        // Setup event listeners
-        function setupEventListeners() {
-            // Search functionality
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', debounce((e) => {
-                searchTerm = e.target.value;
-                filterPosts();
-            }, 300));
-
-            // Category filters
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    currentCategory = e.target.dataset.category;
-                    filterPosts();
-                });
-            });
-
-            // Handle hash changes for navigation
-            window.addEventListener('hashchange', handleRouting);
-            window.addEventListener('load', handleRouting);
+        // Social sharing functions
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(`${currentPost.title} - via Kenya PAYE Calculator`);
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`);
         }
 
-        // Handle routing based on hash
-        function handleRouting() {
-            const hash = window.location.hash;
-            
-            if (hash.startsWith('#/') && hash.length > 2) {
-                // This is a post URL, redirect to post page
-                const slug = hash.substring(2); // Remove #/
-                window.location.href = `post.html#/${slug}`;
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`);
+        }
+
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(`Check out this article: ${currentPost.title}`);
+            window.open(`https://wa.me/?text=${text}%20${url}`);
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            document.querySelectorAll('.theme-toggle').forEach(btn => {
+                btn.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+            });
+            localStorage.setItem('darkMode', isDarkMode);
+        }
+
+        // Load theme preference
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme === 'true') {
+                isDarkMode = true;
+                document.body.classList.add('dark-mode');
+                document.querySelectorAll('.theme-toggle').forEach(btn => {
+                    btn.textContent = '☀️ Light Mode';
+                });
             }
+        }
+
+        // Setup scroll tracking for progress bar
+        function setupScrollTracking() {
+            window.addEventListener('scroll', () => {
+                if (currentView === 'post') {
+                    const article = document.querySelector('.article-body');
+                    if (!article) return;
+
+                    const scrollTop = window.pageYOffset;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop / docHeight) * 100;
+                    
+                    document.getElementById('progressBar').style.width = Math.min(scrollPercent, 100) + '%';
+                } else {
+                    document.getElementById('progressBar').style.width = '0%';
+                }
+            });
+        }
+
+        // Setup back to top button
+        function setupBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Debounce function for search
@@ -792,29 +1607,8 @@
             };
         }
 
-        // Theme toggle
-        function toggleTheme() {
-            isDarkMode = !isDarkMode;
-            document.body.classList.toggle('dark-mode', isDarkMode);
-            document.querySelector('.theme-toggle').textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-            localStorage.setItem('darkMode', isDarkMode);
-        }
-
-        // Load theme preference
-        function loadTheme() {
-            const savedTheme = localStorage.getItem('darkMode');
-            if (savedTheme === 'true') {
-                isDarkMode = true;
-                document.body.classList.add('dark-mode');
-                document.querySelector('.theme-toggle').textContent = '☀️ Light Mode';
-            }
-        }
-
-        // Initialize everything when page loads
-        window.addEventListener('load', () => {
-            loadTheme();
-            initBlog();
-        });
+        // Initialize when page loads
+        window.addEventListener('load', initApp);
     </script>
 </body>
 </html>
