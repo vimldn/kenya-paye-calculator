@@ -717,7 +717,7 @@
         // Load post based on URL slug
         function loadPost() {
             const urlParams = new URLSearchParams(window.location.search);
-            const slug = window.location.pathname.match(/\/blog\/([^\/]+)/)?.[1] || urlParams.get('slug');
+            const slug = urlParams.get('slug');
             
             if (!slug) {
                 // Redirect to blog home if no slug
