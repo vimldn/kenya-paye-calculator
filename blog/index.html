@@ -972,10 +972,183 @@
         ↑
     </button>
 
-    <!-- Include external posts data -->
-    <script src="data/posts.js"></script>
-    
     <script>
+        // Blog posts data
+        const blogPosts = [
+            {
+                id: 1,
+                title: "Complete Guide to Kenya PAYE Tax Brackets 2025",
+                excerpt: "Understanding the new tax brackets and how they affect your take-home salary. Learn about the latest changes in Kenya's tax structure and how to optimize your tax liability.",
+                content: `
+                    <h2>Understanding Kenya's PAYE Tax System</h2>
+                    <p>Kenya's Pay As You Earn (PAYE) tax system is progressive, meaning higher earners pay higher tax rates. The 2025 tax year brings important changes that affect how much tax you pay on your salary.</p>
+
+                    <div class="highlight-box">
+                        <h3>Key Changes in 2025</h3>
+                        <p>The Kenya Revenue Authority (KRA) has implemented several changes to make the tax system more equitable while ensuring adequate government revenue.</p>
+                    </div>
+
+                    <h2>2025 Tax Brackets Breakdown</h2>
+                    <p>Here's how the progressive tax system works:</p>
+                    
+                    <ul>
+                        <li><strong>First KES 24,000:</strong> Taxed at 10%</li>
+                        <li><strong>Next KES 8,333 (KES 24,001 - 32,333):</strong> Taxed at 25%</li>
+                        <li><strong>Next KES 467,667 (KES 32,334 - 500,000):</strong> Taxed at 30%</li>
+                        <li><strong>Next KES 300,000 (KES 500,001 - 800,000):</strong> Taxed at 32.5%</li>
+                        <li><strong>Above KES 800,000:</strong> Taxed at 35%</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Example Calculation</div>
+                        <p><strong>Monthly Salary: KES 100,000</strong></p>
+                        <p>Tax calculation:</p>
+                        <ul>
+                            <li>First KES 24,000 × 10% = KES 2,400</li>
+                            <li>Next KES 8,333 × 25% = KES 2,083</li>
+                            <li>Remaining KES 67,667 × 30% = KES 20,300</li>
+                            <li><strong>Total PAYE: KES 24,783</strong></li>
+                            <li>Less Personal Relief: KES 2,400</li>
+                            <li><strong>Net PAYE: KES 22,383</strong></li>
+                        </ul>
+                    </div>
+
+                    <h2>Personal Relief and Deductions</h2>
+                    <p>Every employed person in Kenya is entitled to a personal relief of KES 2,400 per month. This amount is deducted from your gross tax before calculating your final PAYE.</p>
+
+                    <h3>Additional Deductions Available</h3>
+                    <p>You can further reduce your taxable income through:</p>
+                    <ul>
+                        <li><strong>Pension Contributions:</strong> Up to KES 30,000 monthly</li>
+                        <li><strong>Mortgage Interest:</strong> Up to KES 30,000 monthly</li>
+                        <li><strong>Insurance Relief:</strong> 15% of premiums up to KES 60,000 annually</li>
+                        <li><strong>Post-Retirement Medical Fund:</strong> Up to KES 15,000 monthly</li>
+                    </ul>
+
+                    <h2>Statutory Deductions</h2>
+                    <p>Besides PAYE, employees also pay:</p>
+                    <ul>
+                        <li><strong>NSSF:</strong> 6% of salary up to KES 4,320 monthly</li>
+                        <li><strong>SHIF:</strong> 2.75% of salary (minimum KES 300)</li>
+                        <li><strong>Housing Levy:</strong> 1.5% of salary</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h3>Pro Tip: Use Our Calculator</h3>
+                        <p>Our advanced PAYE calculator automatically applies all these rules and helps you discover optimization opportunities. Try different scenarios to see how various deductions can reduce your tax burden.</p>
+                    </div>
+
+                    <h2>Planning Your Tax Strategy</h2>
+                    <p>Understanding these brackets helps you make informed decisions about salary increases, bonuses, and additional income. Consider:</p>
+                    <ul>
+                        <li>Timing of bonuses to optimize tax brackets</li>
+                        <li>Maximizing allowable deductions</li>
+                        <li>Restructuring compensation packages</li>
+                        <li>Planning retirement contributions</li>
+                    </ul>
+                `,
+                category: "tax-tips",
+                icon: "💰",
+                date: "2025-01-15",
+                readTime: "8 min read",
+                featured: true,
+                author: "Tax Expert Team",
+                slug: "kenya-paye-tax-brackets-2025"
+            },
+            {
+                id: 2,
+                title: "How to Maximize Your Pension Contributions for Tax Relief",
+                excerpt: "Discover how contributing to your pension can significantly reduce your tax burden while securing your retirement future. Complete with calculation examples.",
+                content: `
+                    <h2>The Power of Pension Contributions</h2>
+                    <p>One of the most effective ways to reduce your tax liability in Kenya is through strategic pension contributions. Not only do you secure your retirement future, but you also enjoy immediate tax benefits.</p>
+
+                    <div class="highlight-box">
+                        <h3>Maximum Allowable Contribution</h3>
+                        <p>You can contribute up to KES 30,000 per month (KES 360,000 annually) to a registered pension scheme and claim full tax relief on this amount.</p>
+                    </div>
+
+                    <h2>How Pension Tax Relief Works</h2>
+                    <p>Pension contributions are deducted from your gross salary before calculating PAYE tax. This means you pay tax on a lower amount, resulting in significant savings.</p>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Example: KES 150,000 Monthly Salary</div>
+                        <p><strong>Without Pension Contribution:</strong></p>
+                        <ul>
+                            <li>Gross Salary: KES 150,000</li>
+                            <li>PAYE Tax: KES 39,183</li>
+                            <li>Take-home after tax: KES 110,817</li>
+                        </ul>
+                        <p><strong>With KES 30,000 Pension Contribution:</strong></p>
+                        <ul>
+                            <li>Gross Salary: KES 150,000</li>
+                            <li>Less Pension: KES 30,000</li>
+                            <li>Taxable Income: KES 120,000</li>
+                            <li>PAYE Tax: KES 29,183</li>
+                            <li>Take-home after tax: KES 90,817</li>
+                            <li><strong>Tax Savings: KES 10,000 monthly!</strong></li>
+                        </ul>
+                    </div>
+
+                    <h2>Types of Eligible Pension Schemes</h2>
+                    <p>Several types of pension schemes qualify for tax relief:</p>
+                    <ul>
+                        <li><strong>Occupational Pension Schemes:</strong> Company-sponsored retirement plans</li>
+                        <li><strong>Individual Pension Plans:</strong> Personal retirement savings accounts</li>
+                        <li><strong>NSSF Contributions:</strong> National Social Security Fund (limited relief)</li>
+                        <li><strong>Provident Funds:</strong> Employer-established savings schemes</li>
+                    </ul>
+
+                    <p>Start maximizing your pension contributions today and enjoy both immediate tax relief and long-term financial security.</p>
+                `,
+                category: "tax-tips",
+                icon: "🏦",
+                date: "2025-01-12",
+                readTime: "6 min read",
+                featured: false,
+                author: "Financial Advisor",
+                slug: "maximize-pension-contributions-tax-relief"
+            },
+            {
+                id: 3,
+                title: "Salary Negotiation Strategies for Kenya's Job Market",
+                excerpt: "Learn effective strategies to negotiate better compensation packages, including benefits and allowances that can improve your overall tax efficiency.",
+                content: `<h2>Salary negotiation content...</h2><p>Sample content for salary negotiation article.</p>`,
+                category: "salary",
+                icon: "💼",
+                date: "2025-01-10",
+                readTime: "10 min read",
+                featured: false,
+                author: "Career Coach",
+                slug: "salary-negotiation-strategies-kenya"
+            },
+            {
+                id: 4,
+                title: "Understanding SHIF: What Kenyan Employees Need to Know",
+                excerpt: "A comprehensive breakdown of the Social Health Insurance Fund (SHIF) and how it replaces NHIF. Learn about contribution rates and benefits.",
+                content: `<h2>SHIF content...</h2><p>Sample content for SHIF article.</p>`,
+                category: "news",
+                icon: "🏥",
+                date: "2025-01-08",
+                readTime: "7 min read",
+                featured: false,
+                author: "Policy Analyst",
+                slug: "understanding-shif-kenya-employees"
+            },
+            {
+                id: 5,
+                title: "Best Investment Options for High-Income Earners in Kenya",
+                excerpt: "Explore tax-efficient investment strategies for professionals in higher tax brackets. From real estate to government bonds and equity investments.",
+                content: `<h2>Investment options content...</h2><p>Sample content for investment article.</p>`,
+                category: "investment",
+                icon: "📈",
+                date: "2025-01-05",
+                readTime: "12 min read",
+                featured: false,
+                author: "Investment Advisor",
+                slug: "best-investments-high-income-kenya"
+            }
+        ];
 
         // State management
         let currentView = 'home';
@@ -1067,7 +1240,7 @@
 
         // Show post view
         function showPost(slug) {
-            currentPost = getPostBySlug(slug);
+            currentPost = blogPosts.find(post => post.slug === slug);
             
             if (!currentPost) {
                 // Post not found, redirect to home
@@ -1105,13 +1278,11 @@
             }
 
             blogGrid.innerHTML = postsToShow.map((post, index) => {
-                const postIcon = post.images?.icon || post.fallback?.icon || post.icon || "📄";
-                
                 if (post.featured && currentPage === 1 && currentCategory === 'all' && !searchTerm) {
                     return `
                         <article class="blog-card featured-post" onclick="navigateToPost('${post.slug}')">
                             <div class="featured-image">
-                                ${postIcon}
+                                ${post.icon}
                             </div>
                             <div class="featured-content">
                                 <span class="featured-badge">⭐ Featured</span>
@@ -1128,7 +1299,7 @@
                     return `
                         <article class="blog-card" onclick="navigateToPost('${post.slug}')">
                             <div class="blog-image">
-                                ${postIcon}
+                                ${post.icon}
                             </div>
                             <div class="blog-content">
                                 <div class="blog-meta">
@@ -1152,15 +1323,11 @@
 
         // Render the post content
         function renderPost() {
-            // Handle different icon formats from posts.js
-            const postIcon = currentPost.images?.icon || currentPost.fallback?.icon || currentPost.icon || "📄";
-            const authorName = currentPost.author?.name || currentPost.author || "Unknown Author";
-            
             const postHTML = `
                 <article class="article">
                     <div class="article-hero">
                         <div class="article-hero-content">
-                            <span class="article-icon">${postIcon}</span>
+                            <span class="article-icon">${currentPost.icon}</span>
                             <span class="article-category">${currentPost.category.replace('-', ' ').toUpperCase()}</span>
                             <h1 class="article-title">${currentPost.title}</h1>
                             <div class="article-meta">
@@ -1174,7 +1341,7 @@
                                 </span>
                                 <span class="meta-item">
                                     <span>👤</span>
-                                    <span>${authorName}</span>
+                                    <span>${currentPost.author}</span>
                                 </span>
                             </div>
                         </div>
@@ -1209,12 +1376,12 @@
 
                         <div class="author-info">
                             <div class="author-avatar">
-                                ${getAuthorInitials(authorName)}
+                                ${getAuthorInitials(currentPost.author)}
                             </div>
                             <div class="author-details">
-                                <h4>${authorName}</h4>
+                                <h4>${currentPost.author}</h4>
                                 <p class="author-bio">
-                                    ${getAuthorBio(authorName)}
+                                    ${getAuthorBio(currentPost.author)}
                                 </p>
                             </div>
                         </div>
@@ -1232,22 +1399,12 @@
 
         // Get author bio
         function getAuthorBio(authorName) {
-            // First check if the author is an object with a bio
-            if (currentPost.author && typeof currentPost.author === 'object' && currentPost.author.bio) {
-                return currentPost.author.bio;
-            }
-            
-            // Fallback to default bios based on author name
             const bios = {
                 'Tax Expert Team': 'Our team of certified tax professionals and financial advisors brings years of experience in Kenya\'s tax landscape to help you make informed financial decisions.',
                 'Financial Advisor': 'A certified financial planner with over 10 years of experience helping Kenyan professionals optimize their financial strategies and build wealth.',
                 'Career Coach': 'Professional career consultant specializing in salary negotiations and career advancement in Kenya\'s competitive job market.',
                 'Policy Analyst': 'Expert in Kenyan tax policy and regulatory changes, providing insights on how new laws affect individual taxpayers.',
-                'Investment Advisor': 'Licensed investment advisor with expertise in East African markets and tax-efficient investment strategies.',
-                'Kenya Tax Expert': 'Expert contributor to Kenya PAYE Calculator blog with extensive knowledge of Kenyan tax regulations.',
-                'Akinyi': 'Expert contributor to Kenya PAYE Calculator blog',
-                'Tax Policy Analyst': 'Specialist in Kenya tax policy and regulatory changes',
-                'Financial Tax Advisor': 'Expert in tax optimization and financial planning for Kenyan professionals'
+                'Investment Advisor': 'Licensed investment advisor with expertise in East African markets and tax-efficient investment strategies.'
             };
             
             return bios[authorName] || 'Financial expert dedicated to helping Kenyans make informed money decisions.';
@@ -1255,23 +1412,18 @@
 
         // Load related posts
         function loadRelatedPosts() {
-            // Use the helper function from posts.js to get posts by category
-            const categoryPosts = getPostsByCategory(currentPost.category);
-            const relatedPosts = categoryPosts
-                .filter(post => post.id !== currentPost.id)
+            const relatedPosts = blogPosts
+                .filter(post => post.id !== currentPost.id && post.category === currentPost.category)
                 .slice(0, 3);
             
             const relatedGrid = document.getElementById('relatedPosts');
-            relatedGrid.innerHTML = relatedPosts.map(post => {
-                const postIcon = post.images?.icon || post.fallback?.icon || post.icon || "📄";
-                return `
-                    <div class="related-card" onclick="navigateToPost('${post.slug}')">
-                        <h4>${postIcon} ${post.title}</h4>
-                        <p class="related-excerpt">${post.excerpt}</p>
-                        <small>${formatDate(post.date)} • ${post.readTime}</small>
-                    </div>
-                `;
-            }).join('');
+            relatedGrid.innerHTML = relatedPosts.map(post => `
+                <div class="related-card" onclick="navigateToPost('${post.slug}')">
+                    <h4>${post.icon} ${post.title}</h4>
+                    <p class="related-excerpt">${post.excerpt}</p>
+                    <small>${formatDate(post.date)} • ${post.readTime}</small>
+                </div>
+            `).join('');
         }
 
         // Update SEO meta tags
